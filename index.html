@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hakawati Arabic School</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kahraman&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'Zing Rust Base';
@@ -24,8 +25,14 @@
       padding: 2rem;
     }
     header img {
-      max-width: 150px;
+      max-width: 300px;
       margin-bottom: 1rem;
+    }
+    .arabic-title {
+      font-family: 'Kahraman', serif;
+      font-size: 2.5rem;
+      color: #f6e54d;
+      margin: 0 0 0.5rem 0;
     }
     h1 {
       font-family: 'Zing Rust Base', serif;
@@ -66,11 +73,44 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       border-left: 5px solid #167376;
     }
+    section.centered {
+      text-align: center;
+      border-left: none;
+    }
     h2 {
       font-family: 'Barlow Condensed', sans-serif;
       color: #063831;
       font-size: 2rem;
       margin-top: 0;
+    }
+    .apply-link {
+      display: inline-block;
+      background-color: #f6e54d;
+      color: #063831;
+      padding: 2rem 3rem;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .apply-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .social-link {
+      display: inline-block;
+      color: #167376;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+    .social-link:hover {
+      color: #063831;
+      text-decoration: underline;
     }
     footer {
       background-color: #063831;
@@ -84,39 +124,47 @@
 <body>
   <header>
     <img src="Hakawati github.png" alt="Hakawati Logo">
+    <div class="arabic-title">حكواتي</div>
     <h1>Hakawati Arabic School</h1>
     <p>Learn Arabic Language & Culture</p>
   </header>
 
   <nav>
     <a href="#about">About</a>
-    <a href="#programs">Programs</a>
+    <a href="#apply">Apply Now</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <div class="container">
     <section id="about">
-      <h2>About Our School</h2>
-      <p>Welcome to Hakawati Arabic School, dedicated to teaching Arabic language and culture to students of all ages. Our mission is to preserve and promote the Arabic language while fostering cultural understanding and appreciation.</p>
-      <p>We offer professional instruction in Modern Standard Arabic (MSA) and various dialects with experienced teachers who are passionate about education.</p>
+      <h2>ABOUT</h2>
+      <p>PYM Chicago is launching Hakawati: our first-ever Arabic school coming to the southwest suburbs this summer! This school is going to provide you with 7 courses over 4 weeks of beginner or intermediate level Arabic courses. These courses will be taught by experienced local Arabic professors and teachers who will focus on 3amiyya (colloquial) Arabic. Hakawati students will develop a deeper understanding of the Arabic language and become more comfortable speaking the language conversationally. More information about the school will be announced through our social media @PYMCHICAGO or on this page: Bit.ly/HAKAWATI</p>
+      
+      <p><strong>Anyone between the ages of 18-30 can apply with priority given to Arabic heritage speakers. If you are interested please fill out this application by Sunday May 3rd!</strong></p>
+
+      <h3 style="color: #167376; margin-top: 2rem;">Logistics for Arabic Language Classes:</h3>
+      <p><strong>🗓️ Dates:</strong><br>
+      Saturday June 6th, Sunday June 7th<br>
+      Saturday June 14th, Sunday June 15th<br>
+      Saturday June 21st, Sunday June 22nd<br>
+      Graduation: Saturday June 28th</p>
+      
+      <p><strong>⏰ Time:</strong> 9AM - 11AM</p>
+      
+      <p><strong>📍 Location:</strong> Al-Nahda School - 9741 SW Hwy, Oak Lawn, IL 60453</p>
+      
+      <p><strong>💲 Tuition:</strong> $50</p>
     </section>
 
-    <section id="programs">
-      <h2>Our Programs</h2>
-      <ul>
-        <li><strong>Beginner Arabic:</strong> Perfect for those starting their Arabic journey</li>
-        <li><strong>Intermediate Arabic:</strong> Build on your existing knowledge</li>
-        <li><strong>Advanced Arabic:</strong> Master conversational and written Arabic</li>
-        <li><strong>Cultural Classes:</strong> Learn about Arab traditions, history, and culture</li>
-        <li><strong>Private Tutoring:</strong> One-on-one personalized instruction</li>
-      </ul>
+    <section id="apply" class="centered">
+      <h2>APPLY NOW!</h2>
+      <a href="https://forms.gle/Gh5FYXijmTezeKm2A" class="apply-link">Click Here to Apply</a>
     </section>
 
     <section id="contact">
-      <h2>Contact Us</h2>
+      <h2>QUESTIONS? CONTACT US!</h2>
       <p><strong>Email:</strong> Chicagopalyouthmvmt@gmail.com</p>
-      <p><strong>Phone:</strong> +1 (XXX) XXX-XXXX</p>
-      <p><strong>Hours:</strong> Monday - Saturday, 2:00 PM - 8:00 PM</p>
+      <a href="https://www.instagram.com/pymchicago/" class="social-link">Follow us on Instagram @PYMCHICAGO</a>
     </section>
   </div>
 
