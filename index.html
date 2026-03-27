@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hakawati Arabic School</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Kahraman&display=swap" rel="stylesheet">
   <style>
     @font-face {
       font-family: 'Zing Rust Base';
-      src: url('https://fonts.googleapis.com/css2?family=Zing+Rust&display=swap');
+      src: url('zing.rust-demo-base.otf') format('opentype');
     }
     body {
       font-family: 'Barlow Condensed', sans-serif;
@@ -17,6 +16,9 @@
       margin: 0;
       padding: 0;
       background-color: #ffffff;
+      background-image: url('Hakawati Background.png');
+      background-size: cover;
+      background-attachment: fixed;
     }
     header {
       background-color: #167376;
@@ -28,17 +30,17 @@
       max-width: 300px;
       margin-bottom: 1rem;
     }
-    .arabic-title {
-      font-family: 'Kahraman', serif;
-      font-size: 2.5rem;
-      color: #f6e54d;
-      margin: 0 0 0.5rem 0;
-    }
     h1 {
       font-family: 'Zing Rust Base', serif;
       margin: 0;
       font-size: 3rem;
       color: #f6e54d;
+    }
+    h2 {
+      font-family: 'Zing Rust Base', serif;
+      color: #063831;
+      font-size: 2.5rem;
+      margin-top: 0;
     }
     header p {
       font-family: 'Barlow Condensed', sans-serif;
@@ -73,25 +75,23 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       border-left: 5px solid #167376;
     }
-    section.centered {
+    section.apply-section {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
       text-align: center;
-      border-left: none;
-    }
-    h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      color: #063831;
-      font-size: 2rem;
-      margin-top: 0;
+      padding: 3rem 1rem;
     }
     .apply-link {
       display: inline-block;
       background-color: #f6e54d;
       color: #063831;
-      padding: 2rem 3rem;
+      padding: 4rem 6rem;
       margin: 1.5rem 0;
       border-radius: 10px;
       text-decoration: none;
-      font-size: 1.5rem;
+      font-size: 3rem;
+      font-family: 'Zing Rust Base', serif;
       font-weight: bold;
       transition: transform 0.3s, box-shadow 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -123,8 +123,8 @@
 </head>
 <body>
   <header>
-    <img src="Hakawati github.png" alt="Hakawati Logo">
-    <div class="arabic-title">حكواتي</div>
+    <img src="Hakawati Logo.png" alt="Hakawati Logo">
+    <img src="Hakawati Arabic.png" alt="Hakawati Arabic">
     <h1>Hakawati Arabic School</h1>
     <p>Learn Arabic Language & Culture</p>
   </header>
@@ -142,7 +142,7 @@
       
       <p><strong>Anyone between the ages of 18-30 can apply with priority given to Arabic heritage speakers. If you are interested please fill out this application by Sunday May 3rd!</strong></p>
 
-      <h3 style="color: #167376; margin-top: 2rem;">Logistics for Arabic Language Classes:</h3>
+      <h3 style="color: #167376; margin-top: 2rem; font-family: 'Zing Rust Base', serif; font-size: 1.5rem;">Logistics for Arabic Language Classes:</h3>
       <p><strong>🗓️ Dates:</strong><br>
       Saturday June 6th, Sunday June 7th<br>
       Saturday June 14th, Sunday June 15th<br>
@@ -156,9 +156,8 @@
       <p><strong>💲 Tuition:</strong> $50</p>
     </section>
 
-    <section id="apply" class="centered">
-      <h2>APPLY NOW!</h2>
-      <a href="https://forms.gle/Gh5FYXijmTezeKm2A" class="apply-link">Click Here to Apply</a>
+    <section id="apply" class="apply-section">
+      <a href="https://forms.gle/Gh5FYXijmTezeKm2A" class="apply-link">APPLY NOW!</a>
     </section>
 
     <section id="contact">
