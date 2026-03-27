@@ -26,15 +26,26 @@
       text-align: center;
       padding: 2rem;
     }
-    header img {
-      max-width: 300px;
-      margin-bottom: 1rem;
+    .header-images {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .header-logo {
+      max-width: 400px;
+      width: 100%;
+    }
+    .header-arabic {
+      max-width: 350px;
+      width: 100%;
     }
     h1 {
       font-family: 'Zing Rust Base', serif;
       margin: 0;
       font-size: 3rem;
       color: #f6e54d;
+      display: none;
     }
     h2 {
       font-family: 'Zing Rust Base', serif;
@@ -46,6 +57,7 @@
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.3rem;
       margin: 0.5rem 0 0 0;
+      display: none;
     }
     nav {
       background-color: #063831;
@@ -81,6 +93,10 @@
       box-shadow: none;
       text-align: center;
       padding: 3rem 1rem;
+    }
+    #about h2,
+    #about h3 {
+      color: #063831;
     }
     .apply-link {
       display: inline-block;
@@ -123,8 +139,10 @@
 </head>
 <body>
   <header>
-    <img src="Hakawati Logo.png" alt="Hakawati Logo">
-    <img src="Hakawati Arabic.png" alt="Hakawati Arabic">
+    <div class="header-images">
+      <img src="Hakawati Logo.png" alt="Hakawati Logo" class="header-logo">
+      <img src="Hakawati Arabic.png" alt="Hakawati Arabic" class="header-arabic">
+    </div>
     <h1>Hakawati Arabic School</h1>
     <p>Learn Arabic Language & Culture</p>
   </header>
@@ -142,7 +160,7 @@
       
       <p><strong>Anyone between the ages of 18-30 can apply with priority given to Arabic heritage speakers. If you are interested please fill out this application by Sunday May 3rd!</strong></p>
 
-      <h3 style="color: #167376; margin-top: 2rem; font-family: 'Zing Rust Base', serif; font-size: 1.5rem;">Logistics for Arabic Language Classes:</h3>
+      <h3>Logistics for Arabic Language Classes:</h3>
       <p><strong>🗓️ Dates:</strong><br>
       Saturday June 6th, Sunday June 7th<br>
       Saturday June 14th, Sunday June 15th<br>
