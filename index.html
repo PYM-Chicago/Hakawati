@@ -1,200 +1,273 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hakawati Arabic School offers beginner and intermediate Arabic language courses with cultural workshops in southwest Chicago.">
   <title>Hakawati Arabic School</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="Hakawati Logo.ico">
   <style>
-    @font-face {
-      font-family: 'Zing Rust Base';
-      src: url('zing.rust-demo-base.otf') format('opentype');
+    :root {
+      --primary: #167376;
+      --secondary: #063831;
+      --accent: #f6e54d;
+      --surface: rgba(255, 255, 255, 0.95);
     }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Barlow Condensed', sans-serif;
-      line-height: 1.6;
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
-      background-image: url('Hakawati Background.png');
-      background-size: cover;
-      background-attachment: fixed;
+      font-family: 'Barlow Condensed', sans-serif;
+      line-height: 1.6;
+      background: url('Hakawati Background.png') center/cover fixed no-repeat;
+      color: #1a1a1a;
     }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.22);
+      pointer-events: none;
+      z-index: -1;
+    }
+
     header {
-      background-color: #167376;
+      background-color: rgba(22, 115, 118, 0.92);
       color: #ffffff;
       text-align: center;
-      padding: 2rem;
+      padding: 2rem 1rem;
     }
+
     .header-images {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto 1rem;
     }
-    .header-logo {
-      max-width: 400px;
+
+    .header-images img {
       width: 100%;
+      max-width: 380px;
+      height: auto;
     }
-    .header-arabic {
-      max-width: 350px;
-      width: 100%;
-    }
+
     h1 {
       font-family: 'Zing Rust Base', serif;
-      margin: 0;
-      font-size: 3rem;
-      color: #f6e54d;
-      display: none;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      margin: 1rem 0 0.4rem;
+      color: var(--accent);
     }
-    h2 {
-      font-family: 'Zing Rust Base', serif;
-      color: #063831;
-      font-size: 2.5rem;
-      margin-top: 0;
-    }
+
     header p {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.3rem;
-      margin: 0.5rem 0 0 0;
-      display: none;
-    }
-    nav {
-      background-color: #063831;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav a {
-      color: #ffffff;
-      margin: 0 1.5rem;
-      text-decoration: none;
-      font-weight: bold;
+      margin: 0;
       font-size: 1.1rem;
     }
-    nav a:hover {
-      color: #f6e54d;
-    }
-    .container {
+
+    .tabs {
       max-width: 1000px;
-      margin: 2rem auto;
+      margin: 0 auto;
       padding: 0 1rem;
     }
-    section {
-      background-color: #ffffff;
+
+    .tab-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tab-list button {
+      background: var(--secondary);
+      color: #ffffff;
+      border: none;
+      padding: 0.9rem 1.4rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .tab-list button.active,
+    .tab-list button:hover {
+      background: var(--accent);
+      color: var(--secondary);
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem 2rem;
+    }
+
+    .tab-panel {
+      display: none;
+      background-color: var(--surface);
       margin: 1.5rem 0;
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-left: 5px solid #167376;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+      border-left: 6px solid var(--primary);
     }
-    section.apply-section {
-      background-color: transparent;
-      border: none;
-      box-shadow: none;
-      text-align: center;
-      padding: 3rem 1rem;
+
+    .tab-panel.active {
+      display: block;
     }
-    #about h2,
-    #about h3 {
-      color: #063831;
+
+    h2, h3 {
+      color: var(--secondary);
+      margin-top: 0;
     }
-    .apply-link {
+
+    .cta-button {
       display: inline-block;
-      background-color: #f6e54d;
-      color: #063831;
-      padding: 4rem 6rem;
-      margin: 1.5rem 0;
+      background-color: var(--accent);
+      color: var(--secondary);
+      padding: 1rem 2rem;
+      margin-top: 1.5rem;
       border-radius: 10px;
       text-decoration: none;
-      font-size: 3rem;
       font-family: 'Zing Rust Base', serif;
+      font-size: 1.4rem;
       font-weight: bold;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
     }
-    .apply-link:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
     }
+
     .social-link {
       display: inline-block;
-      color: #167376;
+      color: var(--primary);
       text-decoration: none;
       font-weight: bold;
       margin-top: 1rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
+
     .social-link:hover {
-      color: #063831;
+      color: var(--secondary);
       text-decoration: underline;
     }
+
     footer {
-      background-color: #063831;
+      background-color: var(--secondary);
       color: #ffffff;
       text-align: center;
       padding: 1rem;
       margin-top: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      .tab-list button {
+        flex: 1;
+        min-width: 120px;
+      }
+
+      section {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="header-images">
-      <img src="Hakawati Logo.png" alt="Hakawati Logo" class="header-logo">
-      <img src="Hakawati Arabic.png" alt="Hakawati Arabic" class="header-arabic">
+      <img src="Hakawati Logo.png" alt="Hakawati Logo">
+      <img src="Hakawati Arabic.png" alt="Hakawati Arabic Title">
     </div>
     <h1>Hakawati Arabic School</h1>
-    <p>Learn Arabic Language & Culture</p>
+    <p>Learn Arabic language, culture, and conversational skills with local instructors in the southwest suburbs.</p>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#workshops">Workshops</a>
+  <div class="tabs">
+    <div class="tab-list" role="tablist">
+      <button type="button" class="tab-button active" data-target="about" role="tab" aria-selected="true">About Us</button>
+      <button type="button" class="tab-button" data-target="workshops" role="tab" aria-selected="false">Workshops</button>
+      <button type="button" class="tab-button" data-target="contact" role="tab" aria-selected="false">Contact Us</button>
+    </div>
+  </div>
 
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div class="container">
-    <section id="about">
-      <h2>ABOUT</h2>
-      <p>PYM Chicago is launching Hakawati: our first-ever Arabic school coming to the southwest suburbs this summer! This school is going to provide you with 7 courses over 4 weeks of beginner or intermediate level Arabic courses. These courses will be taught by experienced local Arabic professors and teachers who will focus on 3amiyya (colloquial) Arabic. Hakawati students will develop a deeper understanding of the Arabic language and become more comfortable speaking the language conversationally. More information about the school will be announced through our social media @PYMCHICAGO or on this page!</p>
-      
+  <main>
+    <section id="about" class="tab-panel active" role="tabpanel">
+      <h2>About Hakawati</h2>
+      <p>PYM Chicago is launching Hakawati: our first-ever Arabic school coming to the southwest suburbs this summer. Students will receive 7 courses over 4 weeks at beginner or intermediate levels. Classes are taught by experienced local Arabic professors and focus on 3amiyya (colloquial) Arabic.</p>
+      <p>Hakawati students will develop stronger conversational skills, grow confidence in speaking Arabic, and explore cultural connections. Follow our social media @PYMCHICAGO for updates and announcements.</p>
       <p><strong>Applications are now closed. We look forward to seeing you this summer!</strong></p>
 
-      <h3>Logistics for Arabic Language Classes:</h3>
-      <p><strong>🗓️ Dates:</strong><br>
-      Saturday June 6th, Sunday June 7th<br>
-      Saturday June 13th, Sunday June 14th<br>
-      Saturday June 20th, Sunday June 21st<br>
-      Saturday June 27th<br>
-      
-      <p><strong>🎓Graduation:</strong> Saturday June 27th</p>
-      
-      <p><strong>⏰ Time:</strong> 9AM - 11AM</p>
-      
-      <p><strong>📍 Location:</strong> Al-Nahda Center - 9741 SW Hwy, Oak Lawn, IL 60453</p>
-      
-      <p><strong>💲 Tuition:</strong> $50</p>
+      <h3>Logistics for Arabic Language Classes</h3>
+      <p><strong>Dates:</strong><br>
+      Saturday June 6 • Sunday June 7<br>
+      Saturday June 13 • Sunday June 14<br>
+      Saturday June 20 • Sunday June 21<br>
+      Saturday June 27</p>
 
+      <p><strong>Graduation:</strong> Saturday June 27</p>
+      <p><strong>Time:</strong> 9:00 AM – 11:00 AM</p>
+      <p><strong>Location:</strong> Al-Nahda Center, 9741 SW Hwy, Oak Lawn, IL 60453</p>
+      <p><strong>Tuition:</strong> $50</p>
     </section>
 
-    <section id="workshops">
-      <h2>CULTURAL WORKSHOPS</h2>
-      <p>Open to the whole community — no school registration required! Workshops cover art, cooking cultural dishes, and Palestinian history. Workshops are held after school sessions. Come for the language, stay for the culture!</p>
-      <p><strong>⏰ Time:</strong> 12PM</p>
-      <p><strong>📍 Location:</strong> Al-Nahda Center - 9741 SW Hwy, Oak Lawn, IL 60453</p>
+    <section id="workshops" class="tab-panel" role="tabpanel" hidden>
+      <h2>Cultural Workshops</h2>
+      <p>Open to the whole community — no school registration required. Join us for workshops covering art, cooking, and Palestinian history. Workshops are held after school sessions, so come for the language and stay for the culture.</p>
+      <p><strong>Time:</strong> 12:00 PM</p>
+      <p><strong>Location:</strong> Al-Nahda Center, 9741 SW Hwy, Oak Lawn, IL 60453</p>
     </section>
 
-    <section id="contact">
-      <h2>QUESTIONS? CONTACT US!</h2>
-      <p><strong>Email:</strong> Chicagopalyouthmvmt@gmail.com</p>
-      <a href="https://www.instagram.com/pymchicago/" class="social-link">Follow us on Instagram @PYMCHICAGO</a>
+    <section id="contact" class="tab-panel" role="tabpanel" hidden>
+      <h2>Questions?</h2>
+      <p><strong>Email:</strong> <a href="mailto:Chicagopalyouthmvmt@gmail.com">Chicagopalyouthmvmt@gmail.com</a></p>
+      <a href="https://www.instagram.com/pymchicago/" class="social-link" target="_blank" rel="noopener">Follow us on Instagram @PYMCHICAGO</a>
     </section>
-  </div>
+  </main>
 
   <footer>
     <p>&copy; 2026 Hakawati Arabic School. All rights reserved.</p>
   </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+
+        panels.forEach(panel => {
+          panel.classList.remove('active');
+          panel.hidden = true;
+        });
+
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+
+        const target = document.getElementById(button.dataset.target);
+        if (target) {
+          target.classList.add('active');
+          target.hidden = false;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+```
