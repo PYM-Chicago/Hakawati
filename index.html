@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hakawati Arabic School offers beginner and intermediate Arabic language courses with cultural workshops in southwest Chicago.">
+  <meta name="description" content="Hakawati Arabic School offers beginner and intermediate Arabic language courses with identity courses in southwest Chicago.">
   <title>Hakawati Arabic School</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="Hakawati Logo.ico">
@@ -106,6 +106,17 @@
       transform: translateY(-1px);
     }
 
+    .tab-link {
+      color: var(--secondary);
+      text-decoration: underline;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .tab-link:hover {
+      color: var(--accent);
+    }
+
     main {
       max-width: 1000px;
       margin: 2rem auto;
@@ -129,26 +140,6 @@
     h2, h3 {
       color: var(--secondary);
       margin-top: 0;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background-color: var(--accent);
-      color: var(--secondary);
-      padding: 1rem 2rem;
-      margin-top: 1.5rem;
-      border-radius: 10px;
-      text-decoration: none;
-      font-family: 'Zing Rust Base', serif;
-      font-size: 1.4rem;
-      font-weight: bold;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
     }
 
     .social-link {
@@ -198,7 +189,7 @@
   <div class="tabs">
     <div class="tab-list" role="tablist">
       <button type="button" class="tab-button active" data-target="about" role="tab" aria-selected="true">About Us</button>
-      <button type="button" class="tab-button" data-target="workshops" role="tab" aria-selected="false">Workshops</button>
+      <button type="button" class="tab-button" data-target="identity-courses" role="tab" aria-selected="false">Identity Courses</button>
       <button type="button" class="tab-button" data-target="contact" role="tab" aria-selected="false">Contact Us</button>
     </div>
   </div>
@@ -206,9 +197,8 @@
   <main>
     <section id="about" class="tab-panel active" role="tabpanel">
       <h2>About Hakawati</h2>
-      <p>PYM Chicago is launching Hakawati: our first-ever Arabic school coming to the southwest suburbs this summer. Students will receive 7 courses over 4 weeks at beginner or intermediate levels. Classes are taught by experienced local Arabic professors and focus on 3amiyya (colloquial) Arabic.</p>
-      <p>Hakawati students will develop stronger conversational skills, grow confidence in speaking Arabic, and explore cultural connections. Follow our social media @PYMCHICAGO for updates and announcements.</p>
-      <p><strong>Applications are now closed. We look forward to seeing you this summer!</strong></p>
+      <p>Hakawati is a project from the Palestinian Youth Movement’s Chicago Chapter. Chicago is home to the largest Palestinian population in North America, yet so many of us have struggled to learn and hold on to the Arabic language and identity. This school is about reclaiming our narratives through language and practice. Every weekend in June we will be teaching colloquial Arabic language classes with local Arabic teachers and professors in order to embrace our inner storytellers and feel more confident speaking in our mother tongue. <strong>Applications for the Hakawati Arabic classes are now closed!</strong></p>
+      <p>After class we take a short break followed by our cultural identity classes that explore 4 different tracks that will teach students the rich history of our lands and language. Take a look at the <a href="#identity-courses" class="tab-link" data-target="identity-courses">Identity Courses tab</a> to learn more about the tracks and the courses offered! These are open to all!</p>
 
       <h3>Logistics for Arabic Language Classes</h3>
       <p><strong>Dates:</strong><br>
@@ -220,13 +210,26 @@
       <p><strong>Graduation:</strong> Saturday June 27</p>
       <p><strong>Time:</strong> 9:00 AM – 11:00 AM</p>
       <p><strong>Location:</strong> Al-Nahda Center, 9741 SW Hwy, Oak Lawn, IL 60453</p>
-      <p><strong>Tuition:</strong> $50</p>
     </section>
 
-    <section id="workshops" class="tab-panel" role="tabpanel" hidden>
-      <h2>Cultural Workshops</h2>
-      <p>Open to the whole community — no school registration required. Join us for workshops covering art, cooking, and Palestinian history. Workshops are held after school sessions, so come for the language and stay for the culture.</p>
-      <p><strong>Time:</strong> 12:00 PM</p>
+    <section id="identity-courses" class="tab-panel" role="tabpanel" hidden>
+      <h2>Identity Courses Tracks</h2>
+      <p>Arab identity courses at Hakawati are open to all and do not require an application submission. These classes will take place throughout the month of June after our Arabic language classes.</p>
+      <p>Stay tuned for more details!</p>
+
+      <h3>Arab History Track</h3>
+      <p>The Arab History track explores the region, moments, and displacement that have shaped our past and continue to influence who we are today. We will explore and trace our lineage in a way that is meaningful, grounded, and relevant to our lives now.</p>
+
+      <h3>Arab Music Track</h3>
+      <p>The Arab Music track explores the sounds and rhythms that carry our stories, emotions, and traditions across generations. We will be studying and learning different melodic systems, folk songs, and modern music.</p>
+
+      <h3>Arab Arts Track</h3>
+      <p>The Arab Arts track brings culture to life through poetry, dance, and art that have carried stories, identity, and resilience across generations. Join us to connect with these traditions in a way that feels alive, creative, and rooted in who we are.</p>
+
+      <h3>Cooking & Agriculture Track</h3>
+      <p>The Cooking & Agriculture track explores the connection between land, food, and culture across generations. It’s a way to understand how what we grow and eat reflects who we are.</p>
+
+      <p><strong>Time:</strong> 12:30 PM</p>
       <p><strong>Location:</strong> Al-Nahda Center, 9741 SW Hwy, Oak Lawn, IL 60453</p>
     </section>
 
@@ -243,28 +246,27 @@
 
   <script>
     const buttons = document.querySelectorAll('.tab-button');
+    const controls = document.querySelectorAll('[data-target]');
     const panels = document.querySelectorAll('.tab-panel');
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        buttons.forEach(btn => {
-          btn.classList.remove('active');
-          btn.setAttribute('aria-selected', 'false');
-        });
+    function activateTab(targetId) {
+      buttons.forEach(btn => {
+        const selected = btn.dataset.target === targetId;
+        btn.classList.toggle('active', selected);
+        btn.setAttribute('aria-selected', selected ? 'true' : 'false');
+      });
 
-        panels.forEach(panel => {
-          panel.classList.remove('active');
-          panel.hidden = true;
-        });
+      panels.forEach(panel => {
+        const show = panel.id === targetId;
+        panel.classList.toggle('active', show);
+        panel.hidden = !show;
+      });
+    }
 
-        button.classList.add('active');
-        button.setAttribute('aria-selected', 'true');
-
-        const target = document.getElementById(button.dataset.target);
-        if (target) {
-          target.classList.add('active');
-          target.hidden = false;
-        }
+    controls.forEach(control => {
+      control.addEventListener('click', event => {
+        event.preventDefault();
+        activateTab(control.dataset.target);
       });
     });
   </script>
