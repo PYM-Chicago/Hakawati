@@ -158,6 +158,46 @@
       color: #bf2f21;
     }
 
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .schedule-day {
+      padding: 1.4rem;
+      border-radius: 24px;
+      background: rgba(239, 66, 41, 0.05);
+      border: 1px solid rgba(239, 66, 41, 0.12);
+    }
+
+    .schedule-day h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .schedule-day p,
+    .schedule-day ul {
+      margin: 0.6rem 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 1rem;
+    }
+
+    .schedule-day ul {
+      padding-left: 1rem;
+      list-style: none;
+    }
+
+    .schedule-day ul li {
+      margin-bottom: 0.5rem;
+    }
+
     footer {
       text-align: center;
       color: var(--white);
@@ -185,6 +225,10 @@
       .panel-title {
         font-size: 1.75rem;
       }
+
+      .schedule-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -200,6 +244,7 @@
         <nav class="nav-tabs" role="tablist">
           <button class="tab-btn active" data-target="about" type="button" role="tab" aria-selected="true">About Us</button>
           <button class="tab-btn" data-target="identity" type="button" role="tab" aria-selected="false">Identity Workshops</button>
+          <button class="tab-btn" data-target="schedule" type="button" role="tab" aria-selected="false">Class Schedule</button>
           <button class="tab-btn" data-target="contact" type="button" role="tab" aria-selected="false">Contact Us</button>
         </nav>
       </div>
@@ -251,6 +296,48 @@
 
       <p><strong>Time:</strong> 12:30 PM</p>
       <p><strong>Location:</strong> Al-Nahda Center, 9741 SW Hwy, Oak Lawn, IL 60453</p>
+    </section>
+
+    <section class="panel tab-panel" id="schedule" role="tabpanel" hidden>
+      <h2 class="panel-title">Class Schedules</h2>
+      <p>9:00 am - 11:00 am Arabic Language Class</p>
+      <p>11:00 am - 12:30 pm: Break</p>
+      <p><em>12:30 - 2:30 Choose one Arabic Identity Class! See below</em></p>
+
+      <h3 class="track-title">Class Schedule June 6th & June 7th</h3>
+      <div class="schedule-grid">
+        <div class="schedule-day">
+          <h3>June 6th</h3>
+          <p>9:00 am - 11:00 am Arabic Language Class</p>
+          <p>11:00 am - 12:30 pm: Break</p>
+          <p>12:30 - 2:30 Choose one:</p>
+          <ul>
+            <li><strong>Maqam 101</strong></li>
+            <li>Teachers: C and Karl</li>
+          </ul>
+          <p>or</p>
+          <ul>
+            <li><strong>Join the Movement: Dabke</strong></li>
+            <li>Teachers: FAA Entertainment</li>
+          </ul>
+        </div>
+
+        <div class="schedule-day">
+          <h3>June 7th</h3>
+          <p>9:00 am - 11:00 am Arabic Language Class</p>
+          <p>11:00 am - 12:30 pm: Break</p>
+          <p>12:30 - 2:30 Choose one:</p>
+          <ul>
+            <li><strong>Cooking in the Levant: Maamoul</strong></li>
+            <li>Teacher: Um Moustafa</li>
+          </ul>
+          <p>or</p>
+          <ul>
+            <li><strong>Roots of Palestine</strong></li>
+            <li>Teacher: Creen</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section class="panel tab-panel" id="contact" role="tabpanel" hidden>
