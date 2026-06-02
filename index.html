@@ -241,6 +241,21 @@
       margin-bottom: 0.5rem;
     }
 
+    .schedule-day strong,
+    .schedule-day a {
+      color: var(--red);
+    }
+
+    .class-title strong {
+      color: var(--red);
+    }
+
+    .class-meta {
+      color: var(--red);
+      font-style: italic;
+      font-weight: 400;
+    }
+
     .schedule-note {
       font-style: italic;
       color: var(--muted);
@@ -305,6 +320,7 @@
           <div class="dropdown">
             <button class="tab-btn" data-target="schedule-overview" type="button" role="tab" aria-selected="false">Class Schedule</button>
             <div class="dropdown-menu" role="menu">
+              <button class="dropdown-item" data-target="schedule-overview" type="button" role="menuitem">Overview</button>
               <button class="dropdown-item" data-target="june6" type="button" role="menuitem">June 6th</button>
               <button class="dropdown-item" data-target="june7" type="button" role="menuitem">June 7th</button>
             </div>
@@ -376,13 +392,11 @@
           <p>11:00 am - 12:30 pm: Break</p>
           <p>12:30 - 2:30 Choose one:</p>
           <ul>
-            <li><strong>Maqam 101</strong></li>
-            <li>Teachers: C and Karl</li>
+            <li><a href="#" data-target="june6"><strong>Maqam 101</strong></a></li>
           </ul>
           <p>or</p>
           <ul>
-            <li><strong>Join the Movement: Dabke</strong></li>
-            <li>Teachers: FAA Entertainment</li>
+            <li><a href="#" data-target="june6"><strong>Join the Movement: Dabke</strong></a></li>
           </ul>
         </div>
         <div class="schedule-day">
@@ -392,12 +406,10 @@
           <p>12:30 - 2:30 Choose one:</p>
           <ul>
             <li><strong>Cooking in the Levant: Maamoul</strong></li>
-            <li>Teacher: Um Moustafa</li>
           </ul>
           <p>or</p>
           <ul>
             <li><strong>Roots of Palestine</strong></li>
-            <li>Teacher: Creen</li>
           </ul>
         </div>
       </div>
@@ -414,15 +426,16 @@
 
     <section class="panel tab-panel" id="june6" role="tabpanel" hidden>
       <h2 class="panel-title">June 6th</h2>
-      <p><strong>Maqam 101</strong></p>
-      <p>Teachers: C and Karl</p>
-      <p>Time: 12:30-2:30pm</p>
+      <p class="class-title"><strong>Maqam 101</strong></p>
+      <p class="class-meta">Teachers: C and Karl</p>
+      <p class="class-meta">Time: 12:30-2:30pm</p>
       <p>Join local Chicago musicians Karl El Sokhn aka Reckless Darling and C Mikhail for an introduction to Maqam: the musical system used across the SWANA region.</p>
       <p>Together, we will go over the basics of maqam and cover a wide array of information about common rhythms and scales (maqamat, ajnas) that are used in classical and popular music. The class will also include hands-on collective learning! We will talk about music and play it too!</p>
       <p>All skill levels are welcome, so whether you are a beginner with no prior musical knowledge, or a seasoned musician with an in-depth understanding of theory, this class will offer lots of useful information!</p>
       <h3 class="track-title">Join the Movement: Dabke</h3>
-      <p>Teachers: FAA Entertainment</p>
-      <p>Time: 12:30-2:30pm</p>
+      <p class="class-meta">Teachers: FAA Entertainment</p>
+      <p class="class-meta">Time: 12:30-2:30pm</p>
+      <p>This course will cover the fundamentals of Dabke, a Palestinian folkloric dance that has shaped our culture for generations. Students will learn how to dance and master classic dabke moves such as Zamer, Dal’ouna, Tayara, and Talweeh. Through learning these dance moves, students will discover how each move relates to our traditions, such as our weddings, gatherings, and celebrations. Come to class preferably wearing comfortable clothes that you can dance in. By the end of this course, you’ll be ready to lead your next dabke line!</p>
     </section>
 
     <section class="panel tab-panel" id="june7" role="tabpanel" hidden>
@@ -445,6 +458,8 @@
     const tabButtons = document.querySelectorAll('button[data-target]');
     const tabPanels = document.querySelectorAll('.tab-panel');
     const scheduleGroup = new Set(['schedule-overview', 'june6', 'june7']);
+    const dropdown = document.querySelector('.dropdown');
+    let dropdownTimeout;
 
     function openTab(id) {
       const isSchedule = scheduleGroup.has(id);
@@ -462,14 +477,30 @@
       });
     }
 
+    if (dropdown) {
+      dropdown.addEventListener('mouseenter', () => {
+        dropdown.classList.add('open');
+        if (dropdownTimeout) {
+          clearTimeout(dropdownTimeout);
+          dropdownTimeout = null;
+        }
+      });
+
+      dropdown.addEventListener('mouseleave', () => {
+        dropdownTimeout = setTimeout(() => {
+          dropdown.classList.remove('open');
+        }, 400);
+      });
+    }
+
     tabButtons.forEach(button => {
       button.addEventListener('click', () => openTab(button.dataset.target));
     });
 
-    document.querySelectorAll('a[data-target="identity"]').forEach(link => {
+    document.querySelectorAll('a[data-target]').forEach(link => {
       link.addEventListener('click', event => {
         event.preventDefault();
-        openTab('identity');
+        openTab(link.dataset.target);
       });
     });
   </script>
