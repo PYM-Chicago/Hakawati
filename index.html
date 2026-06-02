@@ -158,6 +158,49 @@
       color: #bf2f21;
     }
 
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      left: 0;
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 0.75rem 0.75rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+      min-width: 190px;
+      z-index: 10;
+    }
+
+    .dropdown:hover .dropdown-menu,
+    .dropdown.open .dropdown-menu {
+      display: flex;
+    }
+
+    .dropdown-item {
+      border: none;
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+      padding: 0.85rem 1rem;
+      border-radius: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .dropdown-item:hover,
+    .dropdown-item.active {
+      background: rgba(239, 66, 41, 0.08);
+      color: var(--red);
+    }
+
     .schedule-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -198,6 +241,16 @@
       margin-bottom: 0.5rem;
     }
 
+    .schedule-note {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .schedule-graduation {
+      color: var(--red);
+      font-weight: 700;
+    }
+
     footer {
       text-align: center;
       color: var(--white);
@@ -229,6 +282,11 @@
       .schedule-grid {
         grid-template-columns: 1fr;
       }
+
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -244,7 +302,13 @@
         <nav class="nav-tabs" role="tablist">
           <button class="tab-btn active" data-target="about" type="button" role="tab" aria-selected="true">About Us</button>
           <button class="tab-btn" data-target="identity" type="button" role="tab" aria-selected="false">Identity Workshops</button>
-          <button class="tab-btn" data-target="schedule" type="button" role="tab" aria-selected="false">Class Schedule</button>
+          <div class="dropdown">
+            <button class="tab-btn" data-target="schedule-overview" type="button" role="tab" aria-selected="false">Class Schedule</button>
+            <div class="dropdown-menu" role="menu">
+              <button class="dropdown-item" data-target="june6" type="button" role="menuitem">June 6th</button>
+              <button class="dropdown-item" data-target="june7" type="button" role="menuitem">June 7th</button>
+            </div>
+          </div>
           <button class="tab-btn" data-target="contact" type="button" role="tab" aria-selected="false">Contact Us</button>
         </nav>
       </div>
@@ -298,7 +362,7 @@
       <p><strong>Location:</strong> Al-Nahda Center, 9741 SW Hwy, Oak Lawn, IL 60453</p>
     </section>
 
-    <section class="panel tab-panel" id="schedule" role="tabpanel" hidden>
+    <section class="panel tab-panel" id="schedule-overview" role="tabpanel" hidden>
       <h2 class="panel-title">Class Schedules</h2>
       <p>9:00 am - 11:00 am Arabic Language Class</p>
       <p>11:00 am - 12:30 pm: Break</p>
@@ -321,7 +385,6 @@
             <li>Teachers: FAA Entertainment</li>
           </ul>
         </div>
-
         <div class="schedule-day">
           <h3>June 7th</h3>
           <p>9:00 am - 11:00 am Arabic Language Class</p>
@@ -338,6 +401,33 @@
           </ul>
         </div>
       </div>
+
+      <h3 class="track-title">Class Schedule June 13th & June 14th</h3>
+      <p class="schedule-note">More information coming soon!</p>
+
+      <h3 class="track-title">June 20th and June 21st</h3>
+      <p class="schedule-note">More information coming soon!</p>
+
+      <h3 class="track-title">June 27th</h3>
+      <p class="schedule-graduation">GRADUATION</p>
+    </section>
+
+    <section class="panel tab-panel" id="june6" role="tabpanel" hidden>
+      <h2 class="panel-title">June 6th</h2>
+      <p><strong>Maqam 101</strong></p>
+      <p>Teachers: C and Karl</p>
+      <p>Time: 12:30-2:30pm</p>
+      <p>Join local Chicago musicians Karl El Sokhn aka Reckless Darling and C Mikhail for an introduction to Maqam: the musical system used across the SWANA region.</p>
+      <p>Together, we will go over the basics of maqam and cover a wide array of information about common rhythms and scales (maqamat, ajnas) that are used in classical and popular music. The class will also include hands-on collective learning! We will talk about music and play it too!</p>
+      <p>All skill levels are welcome, so whether you are a beginner with no prior musical knowledge, or a seasoned musician with an in-depth understanding of theory, this class will offer lots of useful information!</p>
+      <h3 class="track-title">Join the Movement: Dabke</h3>
+      <p>Teachers: FAA Entertainment</p>
+      <p>Time: 12:30-2:30pm</p>
+    </section>
+
+    <section class="panel tab-panel" id="june7" role="tabpanel" hidden>
+      <h2 class="panel-title">June 7th</h2>
+      <p>More information coming soon for the June 7th schedule and course details.</p>
     </section>
 
     <section class="panel tab-panel" id="contact" role="tabpanel" hidden>
@@ -352,12 +442,15 @@
   </div>
 
   <script>
-    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabButtons = document.querySelectorAll('button[data-target]');
     const tabPanels = document.querySelectorAll('.tab-panel');
+    const scheduleGroup = new Set(['schedule-overview', 'june6', 'june7']);
 
     function openTab(id) {
+      const isSchedule = scheduleGroup.has(id);
+
       tabButtons.forEach(button => {
-        const active = button.dataset.target === id;
+        const active = button.dataset.target === id || (isSchedule && button.dataset.target === 'schedule-overview');
         button.classList.toggle('active', active);
         button.setAttribute('aria-selected', active.toString());
       });
