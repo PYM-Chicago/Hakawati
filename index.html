@@ -281,6 +281,139 @@
       font-weight: 700;
     }
 
+    /* Tighten spacing for the Schedule overview header and lines */
+    #schedule-overview .panel-title {
+      margin-bottom: 0.2rem;
+      font-size: 1.85rem;
+    }
+
+    #schedule-overview > p,
+    #schedule-overview p,
+    #schedule-overview em {
+      margin: 0.08rem 0;
+      line-height: 1.15;
+      font-size: 0.98rem;
+    }
+
+    /* Reduce gap above the schedule grid */
+    #schedule-overview .schedule-grid {
+      margin-top: 0.6rem;
+      gap: 1rem;
+    }
+
+    /* Show bullets for track link lists */
+    .track ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+      margin: 0.3rem 0;
+      color: var(--muted);
+    }
+
+    .track ul li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* Make list markers (bullets) red in Identity Workshops */
+    .track ul li::marker {
+      color: var(--red);
+    }
+
+    /* Inline schedule options formatting */
+    .schedule-options {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      align-items: center;
+      margin: 0.2rem 0;
+      font-size: 1rem;
+    }
+
+    .schedule-options a {
+      text-decoration: none;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .schedule-options .sep {
+      color: var(--muted);
+      font-weight: 400;
+      margin: 0 0.4rem;
+    }
+
+    /* Make inline schedule links visually even */
+    .schedule-options a {
+      display: inline-block;
+      min-width: 160px;
+      padding: 0.25rem 0.6rem;
+      text-align: center;
+      background: transparent;
+      border-radius: 8px;
+      flex: 0 0 160px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .schedule-options {
+        gap: 0.4rem;
+        flex-direction: column;
+      }
+
+      .schedule-options a {
+        min-width: auto;
+        width: 100%;
+        flex: 0 0 auto;
+      }
+    }
+
+    /* Grid layout so the separator 'or' is centered and links align to it */
+    .schedule-options-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      justify-items: center;
+      gap: 0.6rem 1rem;
+      margin: 0.2rem 0;
+      overflow-x: auto; /* allow horizontal scroll on very small screens */
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* push left link to the right edge of its column and right link to the left edge */
+    .schedule-options-grid .opt-left {
+      justify-self: end;
+    }
+
+    .schedule-options-grid .opt-right {
+      justify-self: start;
+    }
+
+    .schedule-options-grid .opt a {
+      display: inline-block;
+      max-width: 240px;
+      padding: 0.25rem 0.6rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .schedule-options-grid .sep {
+      color: var(--muted);
+      font-weight: 400;
+      text-align: center;
+      padding: 0 0.25rem;
+    }
+
+    /* Schedule overview image styling */
+    .schedule-overview {
+      max-width: 520px;
+      width: 100%;
+      display: block;
+      margin: 0.4rem auto 0.75rem;
+      border-radius: 10px;
+      object-fit: contain;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
     footer {
       text-align: center;
       color: var(--white);
@@ -377,24 +510,26 @@
       <div class="track">
         <div class="track-title">Arab Music Track</div>
         <p>The Arab Music track explores the sounds and rhythms that carry our stories, emotions, and traditions across generations. We will be studying and learning different melodic systems, folk songs, and modern music.</p>
-        <ul style="color: var(--muted); padding-left: 1rem; list-style: none;">
-          <li><a href="#" data-target="june6"><strong>Maqam 101</strong></a></li>
-          <li><a href="#" data-target="june7"><strong>Cooking in the Levant: Maamoul</strong></a></li>
-          <li><a href="#" data-target="june7"><strong>Roots of Palestine</strong></a></li>
-        </ul>
+          <ul>
+            <li><a href="#" data-target="june6"><strong>Maqam 101</strong></a></li>
+          </ul>
       </div>
 
       <div class="track">
         <div class="track-title">Arab Arts Track</div>
         <p>The Arab Arts track brings culture to life through poetry, dance, and art that have carried stories, identity, and resilience across generations. Join us to connect with these traditions in a way that feels alive, creative, and rooted in who we are.</p>
-        <ul style="color: var(--muted); padding-left: 1rem; list-style: none;">
-          <li><a href="#" data-target="june6"><strong>Join the Movement: Dabke</strong></a></li>
-        </ul>
+          <ul>
+            <li><a href="#" data-target="june6"><strong>Join the Movement: Dabke</strong></a></li>
+          </ul>
       </div>
 
       <div class="track">
         <div class="track-title">Cooking & Agriculture Track</div>
         <p>The Cooking & Agriculture track explores the connection between land, food, and culture across generations. It’s a way to understand how what we grow and eat reflects who we are.</p>
+        <ul>
+          <li><a href="#" data-target="june7"><strong>Cooking in the Levant: Maamoul</strong></a></li>
+          <li><a href="#" data-target="june7"><strong>Roots of Palestine</strong></a></li>
+        </ul>
       </div>
 
       <p><strong>Time:</strong> 12:30 PM</p>
@@ -403,9 +538,7 @@
 
     <section class="panel tab-panel" id="schedule-overview" role="tabpanel" hidden>
       <h2 class="panel-title">Class Schedules</h2>
-      <p>9:00 am - 11:00 am Arabic Language Class</p>
-      <p>11:00 am - 12:30 pm: Break</p>
-      <p><em>12:30 - 2:30 Choose one Arabic Identity Class! See below</em></p>
+      <img src="Schedule Overview.png" alt="Schedule Overview" class="schedule-overview" />
 
       <h3 class="track-title">June 6th & June 7th</h3>
       <div class="schedule-grid">
@@ -414,26 +547,22 @@
           <p>9:00 am - 11:00 am Arabic Language Class</p>
           <p>11:00 am - 12:30 pm: Break</p>
           <p>12:30 - 2:30 Choose one:</p>
-          <ul>
-            <li><a href="#" data-target="june6"><strong>Maqam 101</strong></a></li>
-          </ul>
-          <p>or</p>
-          <ul>
-            <li><a href="#" data-target="june6"><strong>Join the Movement: Dabke</strong></a></li>
-          </ul>
+          <div class="schedule-options-grid">
+            <div class="opt opt-left"><a href="#" data-target="june6"><strong>Maqam 101</strong></a></div>
+            <div class="sep">or</div>
+            <div class="opt opt-right"><a href="#" data-target="june6"><strong>Join the Movement: Dabke</strong></a></div>
+          </div>
         </div>
         <div class="schedule-day">
           <h3>June 7th</h3>
           <p>9:00 am - 11:00 am Arabic Language Class</p>
           <p>11:00 am - 12:30 pm: Break</p>
           <p>12:30 - 2:30 Choose one:</p>
-          <ul>
-            <li><a href="#" data-target="june7"><strong>Cooking in the Levant: Maamoul</strong></a></li>
-          </ul>
-          <p>or</p>
-          <ul>
-            <li><a href="#" data-target="june7"><strong>Roots of Palestine</strong></a></li>
-          </ul>
+          <div class="schedule-options-grid">
+            <div class="opt opt-left"><a href="#" data-target="june7"><strong>Cooking in the Levant: Maamoul</strong></a></div>
+            <div class="sep">or</div>
+            <div class="opt opt-right"><a href="#" data-target="june7"><strong>Roots of Palestine</strong></a></div>
+          </div>
         </div>
       </div>
 
@@ -449,7 +578,7 @@
 
     <section class="panel tab-panel" id="june6" role="tabpanel" hidden>
       <h2 class="panel-title">June 6th</h2>
-      <p class="class-title"><strong>Maqam 101</strong></p>
+      <h3 class="track-title">Maqam 101</h3>
       <p class="class-meta">Teachers: C and Karl</p>
       <p class="class-meta">Time: 12:30-2:30pm</p>
       <p>Join local Chicago musicians Karl El Sokhn aka Reckless Darling and C Mikhail for an introduction to Maqam: the musical system used across the SWANA region.</p>
@@ -463,11 +592,11 @@
 
     <section class="panel tab-panel" id="june7" role="tabpanel" hidden>
       <h2 class="panel-title">June 7th</h2>
-      <p class="class-title"><strong>Cooking in the Levant: Maamoul</strong></p>
+      <h3 class="track-title">Cooking in the Levant: Maamoul</h3>
       <p class="class-meta">Teacher: Um Moustafa</p>
       <p class="class-meta">Time: 12:30-2:30pm</p>
       <p>This hands-on cooking course will guide students through making maamoul, a beloved Levantine filled pastry. Participants will learn about regional ingredients, traditional techniques, and the cultural stories behind this classic treat.</p>
-      <p class="class-title"><strong>Roots of Palestine</strong></p>
+      <h3 class="track-title">Roots of Palestine</h3>
       <p class="class-meta">Teacher: Creen - PYM Chicago</p>
       <p class="class-meta">Time: 12:30-2:30pm</p>
       <p>Explore Palestinian identity, history, and storytelling through an interactive class led by Creen from PYM Chicago. This session connects language, place, and culture in a meaningful way for all participants.</p>
