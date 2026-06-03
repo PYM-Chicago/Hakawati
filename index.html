@@ -778,6 +778,15 @@
         panel.classList.toggle('active', show);
         panel.hidden = !show;
       });
+
+      // Save the current tab to localStorage
+      localStorage.setItem('currentTab', id);
+    }
+
+    // Restore the saved tab on page load
+    function restoreTab() {
+      const savedTab = localStorage.getItem('currentTab') || 'about';
+      openTab(savedTab);
     }
 
     if (dropdown) {
@@ -806,6 +815,9 @@
         openTab(link.dataset.target);
       });
     });
+
+    // Restore tab on page load
+    document.addEventListener('DOMContentLoaded', restoreTab);
   </script>
 </body>
 </html>
