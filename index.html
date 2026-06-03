@@ -532,7 +532,9 @@
       max-width: 240px;
       padding: 0.25rem 0.6rem;
       text-align: center;
-      white-space: nowrap;
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
 
     .schedule-options-grid .sep {
@@ -540,6 +542,27 @@
       font-weight: 400;
       text-align: center;
       padding: 0 0.25rem;
+    }
+
+    @media (max-width: 760px) {
+      .schedule-options-grid {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+
+      .schedule-options-grid .opt-left,
+      .schedule-options-grid .opt-right {
+        justify-self: center;
+      }
+
+      .schedule-options-grid .sep {
+        display: none;
+      }
+
+      .schedule-options-grid .opt a {
+        max-width: 100%;
+        width: 100%;
+      }
     }
 
     /* Schedule overview image styling */
